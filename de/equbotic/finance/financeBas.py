@@ -1,3 +1,4 @@
+
 import math
 
 #gute Artikel/Code > Links
@@ -22,7 +23,7 @@ def DF_ofZerorate(zeroRate, days):
      :param days: the number of days form today
      :return: the DiscountFactor 
   '''
-  discountFactor = 1.0 / ( pow(1.0+zeroRate, (days/365)) )
+  discountFactor = 1.0 / ( math.exp(zeroRate * days/365) )
   return discountFactor
 
 # -------------------------------------------------------------------
@@ -32,7 +33,7 @@ def ZeroRate_ofDF(df, days):
      :param days: the number of days in the period
      :return: the ZeroRate for the period (Base is 365)
   '''
-  zeroRate = -math.log(df) * (365/days)
+  zeroRate = math.log(1/df) * (365/days)
   return zeroRate
 
 # -------------------------------------------------------------------
@@ -59,13 +60,13 @@ def addRateToCurve(dates, dfs, zeros, cashRate, days, base, fwdstart):
      :param base:  the DayCountBase of the Rate (e.g. 360 or 365)
      :param fwdstart: start date of period
   """
-  df   = fiB.DF_ofCash(cashRate, days, base)
+  df   = DF_ofCash(cashRate, days, base)
   if (fwdstart > 0):
     ii = dates.index(fwdstart)
     df = df * dfs[ii]
 
   days0 = days + fwdstart
-  zero  = fiB.ZeroRate_ofDF(df, days0)
+  zero  = ZeroRate_ofDF(df, days0)
 
   dates.append( days0 ) 
   dfs  .append( df )  
@@ -84,25 +85,25 @@ def addParCpnToCurve(dates, dfs, zeros, cpn, years, mtrdays, lastcpndays):
      :param mtrdays: date of the maturity
      :param lastcpndays: ist the days from today to coupondate before matirity
   """
-  pv_spot = fiB.PV_ofCoupon(cpn, years)
+  pv_spot = PV_ofCoupon(cpn, years)
   ii_spot = dates.index(2)
-  print("pv_spot ",pv_spot)
+  #print("pv_spot ",pv_spot)
   pv = pv_spot * dfs[ii_spot]   #present value at today
-  print("pv ",pv)
+  #print("pv ",pv)
 
   ii_lastcpn = dates.index(lastcpndays)
   df_lastcpn = dfs[ii_lastcpn]     #df at lastcpn date
-  print("df_lastcpn ",df_lastcpn)
+  #print("df_lastcpn ",df_lastcpn)
   pv_lastcpn = pv / df_lastcpn  #pf updisc. ro last cpn date
-  print("pv_lastcpn ",pv_lastcpn) 
+  #print("pv_lastcpn ",pv_lastcpn) 
 
   df_lastprd = 1 / (1+cpn)      #df for last cpn for 1 year
-  print("df_lastprd ",df_lastprd)
+  #print("df_lastprd ",df_lastprd)
 
   df_mtr = df_lastprd * df_lastcpn
-  print("df_mtr ",df_mtr) 
+  #print("df_mtr ",df_mtr) 
 
-  zero  = fiB.ZeroRate_ofDF(df_mtr, mtrdays)
+  zero  = ZeroRate_ofDF(df_mtr, mtrdays)
 
   dates.append( mtrdays ) 
   dfs  .append( df_mtr )  
@@ -122,7 +123,10 @@ def ZeroRate_ofCurve(CurveDates, CurveDFs, date):
     if CurveDates[ii-1] <= date and CurveDates[ii] > date:
 
       if CurveDates[ii-1] == date:              #date is a bucket
-        return ZeroRate_ofDF(CurveDFs[ii-1], date) 
+        zy = ZeroRate_ofDF(CurveDFs[ii-1], date) 
+        #print(CurveDFs[ii-1])
+        #print(zy)
+        return zy
       else:                         #interpolate between buckets by zerorate
         dist = CurveDates[ii] - CurveDates[ii-1]
         fct1 = (date - CurveDates[ii-1]) / dist
