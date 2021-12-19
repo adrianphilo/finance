@@ -29,6 +29,12 @@ Die Kalkulationsfunktion Bewertungsansatz bestimmen spezifiziert die Berechnungs
 
 Im Anwendungsfall zur Bestimmung des regulatorischen Kapitals gibt der Bewertungsansatz an, ob eine Risikoposition bzw. eine Assoziation (Teilexposure->Sicherheit) gemäß dem KSA oder IRBA zu bewerten ist. Die Berechnungslogik berücksichtigt dabei die Anforderungen der CRR [1] und setzt die durch die KfW wahrgenommenen Wahlmöglichkeiten um (vgl. Fachinformation [2]).
 
+.. math::
+
+         (a + b)^2 = a^2 + 2ab + b^2
+
+         (a - b)^2 = a^2 - 2ab + b^2
+
 In Bezug auf die regulatorische Bewertung sind dabei folgende Ausprägungen des Bewertungsansatzes zu differenzieren[1]:
  
 -      <CCP>: Handelsrisikopositionen gegenüber zentralen Gegenparteien (inkl. Beiträge zum Ausfallfonds der zentralen Gegenpartei(en)) werden auf Grundlage eines eigenständigen Bewertungsansatzes entsprechend Teil 3, Titel II, Kapitel 6, Abschnitt 9 der CRR behandelt (CRR Artikel 107 (2), Satz 1 und [3]).
