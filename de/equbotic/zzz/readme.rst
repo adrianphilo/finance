@@ -1,3 +1,10 @@
+  .. role:: raw-latex(raw)
+    :format: latex html
+
+.. raw:: html
+
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
   /*
 .. */
   package de.kfw.kr.rmp_kupf.kfktCluster.Allgemeine_Funktionen
