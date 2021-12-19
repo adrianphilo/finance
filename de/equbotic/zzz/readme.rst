@@ -37,6 +37,11 @@ Im Anwendungsfall zur Bestimmung des regulatorischen Kapitals gibt der Bewertung
 
 In Bezug auf die regulatorische Bewertung sind dabei folgende Ausprägungen des Bewertungsansatzes zu differenzieren[1]:
  
+ .. math::
+
+         (a + b)^2  &=  (a + b)(a + b) \\
+                    &=  a^2 + 2ab + b^2 
+ 
 -      <CCP>: Handelsrisikopositionen gegenüber zentralen Gegenparteien (inkl. Beiträge zum Ausfallfonds der zentralen Gegenpartei(en)) werden auf Grundlage eines eigenständigen Bewertungsansatzes entsprechend Teil 3, Titel II, Kapitel 6, Abschnitt 9 der CRR behandelt (CRR Artikel 107 (2), Satz 1 und [3]).
 -      <IRBA>: Bewertung gemäß IRBA, da für die entsprechenden Elemente geeignete und von der zuständigen Aufsicht zugelassene Ratingverfahren existieren.
 -      <KSA − Übergangsbestimmungen>: Vorübergehende Anwendung des KSA ohne Anrechnung auf den Abdeckungsgrad, z.B. aktuell noch für Risikopositionen aus Beteiligungen gemäß CRR Artikel 495 (1)[2].
