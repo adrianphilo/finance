@@ -1,4 +1,4 @@
-  .. role:: raw-latex(raw)
+.. role:: raw-latex(raw)
     :format: latex html
 
 .. raw:: html
