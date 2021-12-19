@@ -27,6 +27,12 @@ Fachliche Beschreibung der Funktion
 -----------------------------------
 Die Kalkulationsfunktion Bewertungsansatz bestimmen spezifiziert die Berechnungslogik zur Bestimmung des Bewertungsansatzes für Risikopositionen ohne Berücksichtigung der Besicherungsstruktur und auf Ebene der Assoziation (Teilexposure->Sicherheit) unter Berücksichtigung der Besicherung.
 
+Displayed math is given by
+
+.. raw:: latex html
+
+  \[ e \vec{v} \times \vec{B} = m \frac{d \vec{v}}{dt} \]
+  
 Im Anwendungsfall zur Bestimmung des regulatorischen Kapitals gibt der Bewertungsansatz an, ob eine Risikoposition bzw. eine Assoziation (Teilexposure->Sicherheit) gemäß dem KSA oder IRBA zu bewerten ist. Die Berechnungslogik berücksichtigt dabei die Anforderungen der CRR [1] und setzt die durch die KfW wahrgenommenen Wahlmöglichkeiten um (vgl. Fachinformation [2]).
 
 .. math::
