@@ -1,4 +1,4 @@
-
+import sys
 import math
 
 #gute Artikel/Code > Links
@@ -157,3 +157,11 @@ def Fwd_ofCurve(CurveDates, CurveDFs, start, end, base):
   fwdrate = (df1 / df2 -1) * (base/(end-start))
   return fwdrate
   
+def main() -> int:
+    """Echo print some function the input arguments to standard output"""
+    print ( DF_ofCash(0.02,  60, 360) )
+    print ( DF_ofCash(0.04, 120, 365) )
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())  # next section explains the use of sys.exit
